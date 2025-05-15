@@ -1,0 +1,29 @@
+name: Build and Push Docker Image with Provenance
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Tag helloworld
+        run: |
+          docker tag hello-world gchr.io/khalkie/hello-world
+
+      - name: Generate provenance
+        uses: actions/attest-build-provenance@v2.3.0
+        with:
+          subject-name: ghcr.io/khalkie/hello-world
+          push-to-registry: true      
