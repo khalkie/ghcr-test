@@ -25,8 +25,18 @@ jobs:
         run: |
           docker tag hello-world gchr.io/khalkie/hello-world
 
+      - name: Build and push image
+        id: push
+        uses: docker/build-push-action@v5.0.0
+        with:
+          context: .
+          push: true
+          tags: gchr.io/khalkie/hello-world:latest
+          
       - name: Generate provenance
         uses: actions/attest-build-provenance@v2.3.0
         with:
           subject-name: ghcr.io/khalkie/hello-world
+          subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true      
+          
