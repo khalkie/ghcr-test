@@ -30,8 +30,8 @@ jobs:
 
       - name: Tag helloworld
         run: |
-          docker tag hello-world gchr.io/khalkie/hello-world
-          docker image ls --digests gchr.io/khalkie/hello-world --format '{{.Tag}} {{.Digest}}'
+          docker tag hello-world ghcr.io/khalkie/hello-world
+          docker image ls --digests ghcr.io/khalkie/hello-world --format '{{.Tag}} {{.Digest}}'
                 
       - name: Generate provenance
         uses: actions/attest-build-provenance@v2.3.0
