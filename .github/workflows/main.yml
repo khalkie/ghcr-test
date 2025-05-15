@@ -32,6 +32,7 @@ jobs:
         run: |
           docker tag hello-world ghcr.io/khalkie/hello-world
           docker image ls --digests ghcr.io/khalkie/hello-world --format '{{.Tag}} {{.Digest}}'
+          docker push ghcr.io/khalkie/hello-world
                 
       - name: Generate provenance
         uses: actions/attest-build-provenance@v2.3.0
