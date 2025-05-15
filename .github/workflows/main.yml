@@ -38,6 +38,6 @@ jobs:
         uses: actions/attest-build-provenance@v2.3.0
         with:
           subject-name: ghcr.io/khalkie/hello-world
-          subject-digest: sha256:dd01f97f252193ae3210da231b1dca0cffab4aadb3566692d6730bf93f123a48
+          subject-digest: sha256:7565f2c7034d87673c5ddc3b1b8e97f8da794c31d9aa73ed26afffa1c8194889
           push-to-registry: true      
           
