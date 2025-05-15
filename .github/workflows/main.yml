@@ -30,6 +30,6 @@ jobs:
         uses: actions/attest-build-provenance@v2.3.0
         with:
           subject-name: ghcr.io/khalkie/hello-world
-          subject-digest: ${{ steps.push.outputs.digest }}
+          subject-digest: sha256:dd01f97f252193ae3210da231b1dca0cffab4aadb3566692d6730bf93f123a48
           push-to-registry: true      
           
