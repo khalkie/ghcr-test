@@ -27,17 +27,21 @@ jobs:
       - name: Pull helloworld
         run: |
           docker pull hello-world
-
       - name: Tag helloworld
         run: |
-          docker tag hello-world ghcr.io/khalkie/hello-world
-          docker image ls --digests ghcr.io/khalkie/hello-world --format '{{.Tag}} {{.Digest}}'
-          docker push ghcr.io/khalkie/hello-world
+          docker tag hello-world ghcr.io/khalkie/hello-world-1
+      - name: Build and push image
+        id: push
+        uses: docker/build-push-action@v5.0.0
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/khalkie/hello-world-1:latest
                 
       - name: Generate provenance
         uses: actions/attest-build-provenance@v2.3.0
         with:
-          subject-name: ghcr.io/khalkie/hello-world
-          subject-digest: sha256:7565f2c7034d87673c5ddc3b1b8e97f8da794c31d9aa73ed26afffa1c8194889
+          subject-name: ghcr.io/khalkie/hello-world-1
+          subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true      
           
