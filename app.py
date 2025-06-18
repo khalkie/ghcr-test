@@ -1,18 +1,10 @@
-# This is a comment - comments start with a '#'
-# This program prints a greeting to the console.
+import http.server
+import socketserver
 
-def greet(name):
-    """
-    This function takes a name as input and returns a greeting message.
-    """
-    return f"Hello, {name}!"
+PORT = 8000  # You can change the port number here
 
-if __name__ == "__main__":
-    # This block of code runs only when the script is executed directly
-    user_name = "World"
-    message = greet(user_name)
-    print(message)
+Handler = http.server.SimpleHTTPRequestHandler
 
-    # You can also use a different name
-    another_name = "Pythonista"
-    print(greet(another_name))
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    print(f"serving at port {PORT}")
+    httpd.serve_forever()
