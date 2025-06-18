@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Install any needed dependencies specified in requirements.txt
-RUN pip install --no-cache-dir
+RUN pip install --upgrade pip
 
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
