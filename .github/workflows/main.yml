@@ -35,9 +35,10 @@ jobs:
       #     tags: ghcr.io/${{ github.repository }}:single-docker
       #     # platforms: linux/amd64,linux/arm64
       #     provenance: true
+      # docker buildx build --provenance -t ghcr.io/khalkie/ghcr-test:oci-artifact --output type=registry,oci-artifact=true .
       - name: Do buildx
         run: |
-          docker buildx build --provenance -t ghcr.io/khalkie/ghcr-test:oci-artifact --output type=registry,oci-artifact=true .
+          docker buildx build .
       # - name: Attest build provenance
       #   uses: actions/attest-build-provenance@v2
       #   with:
