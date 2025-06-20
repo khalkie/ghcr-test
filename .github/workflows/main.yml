@@ -37,7 +37,7 @@ jobs:
       #     provenance: true
       - name: Do buildx
         run: |
-          docker buildx build . --provenance --tag oci-artifact --output type=registry,oci-artifact=true
+          docker buildx build --provenance --tag oci-artifact --output type=registry,oci-artifact=true .
           
           # docker push ghcr.io/khalkie/hello-world
           # docker tag hello-world ghcr.io/khalkie/hello-world-1
