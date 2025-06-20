@@ -38,7 +38,7 @@ jobs:
       # docker buildx build --provenance -t ghcr.io/khalkie/ghcr-test:oci-artifact --output type=registry,oci-artifact=true .
       - name: Do buildx
         run: |
-          docker buildx build  -t ghcr.io/khalkie/ghcr-test:oci-artifact --output type=registry,oci-artifact=true .
+          docker buildx build  -t ghcr.io/khalkie/ghcr-test:oci-artifact --output type=registry,oci-artifact=true --provenance .
       # - name: Attest build provenance
       #   uses: actions/attest-build-provenance@v2
       #   with:
