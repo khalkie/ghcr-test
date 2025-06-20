@@ -26,15 +26,20 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image (multi-platform)
-        id: push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: ghcr.io/${{ github.repository }}:single-docker
-          # platforms: linux/amd64,linux/arm64
-          provenance: true
+      # - name: Build and push Docker image (multi-platform)
+      #   id: push
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     context: .
+      #     push: true
+      #     tags: ghcr.io/${{ github.repository }}:single-docker
+      #     # platforms: linux/amd64,linux/arm64
+      #     provenance: true
+      - name: Do buildx
+        run: |
+          docker buildx build . --provenance --oci-artifact --push --tag oci-artifact
+          # docker push ghcr.io/khalkie/hello-world
+          # docker tag hello-world ghcr.io/khalkie/hello-world-1
 
       # - name: Attest build provenance
       #   uses: actions/attest-build-provenance@v2
