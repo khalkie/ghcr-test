@@ -26,22 +26,18 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Build and push Docker image (multi-platform)
-      #   id: push
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: ghcr.io/${{ github.repository }}:single-docker
-      #     # platforms: linux/amd64,linux/arm64
-      #     provenance: true
-      # docker buildx build --provenance -t ghcr.io/khalkie/ghcr-test:oci-artifact --output type=registry,oci-artifact=true .
-      - name: Do buildx
-        run: |
-          docker buildx build  -t ghcr.io/khalkie/ghcr-test:oci-artifact-new --output type=registry,oci-artifact=true --provenance true .
-      # - name: Attest build provenance
-      #   uses: actions/attest-build-provenance@v2
-      #   with:
-      #     subject-name: ghcr.io/${{ github.repository }}
-      #     subject-digest: ${{ steps.push.outputs.digest }}
-      #     push-to-registry: true
+      - name: Build and push Docker image (multi-platform)
+        id: push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: index.docker.io/${{ github.repository }}:v1-dockerhub
+          # platforms: linux/amd64,linux/arm64
+          provenance: false      
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: index.docker.io/${{ github.repository }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
