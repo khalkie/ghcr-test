@@ -17,7 +17,6 @@ actually that was a lie, here's another one
 and a third!
 
 
-changed it again, can't believe it! I edited one line
-and changed a second
+changed it again, can't believe it!
 
-deleted one line and added another
+updated the readme again! unbelievable!
