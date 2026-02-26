@@ -24,3 +24,5 @@ updated the readme again! unbelievable!
 one line edited
 
 another one please
+
+see if both commits show up after the squash
