@@ -25,6 +25,8 @@ one line edited
 
 another one please
 
+wtf why isn't this showing up now
+
 see if both commits show up after the squash
 
 try to rebase and see if we still have original commits
