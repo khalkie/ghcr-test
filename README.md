@@ -55,4 +55,11 @@ another edit to readme
 
 second branch change (4 lines total)
 
+changes changes
+
+more changes
+
 another one another one
+
+change yet another change
+still on the same line though
